@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { useMemo, useState, type FormEvent } from "react";
 import type { Warehouse } from "../types";
 
@@ -212,4 +213,8 @@ export default function Adjustments({ search, onSearchChange, warehouse }: Adjus
       )}
     </section>
   );
+=======
+export default function Adjustments() {
+  return <div>Adjustments</div>;
+>>>>>>> b7eb8b05e7825b3066a6f3f3316489adf64312db
 }

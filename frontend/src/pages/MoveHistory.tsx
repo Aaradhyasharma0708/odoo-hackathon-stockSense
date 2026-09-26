@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { useMemo, useState } from "react";
 import type { Warehouse } from "../types";
 
@@ -181,4 +182,8 @@ export default function MoveHistory({ search, onSearchChange, warehouse }: MoveH
       )}
     </section>
   );
+=======
+export default function MoveHistory() {
+  return <div>Move History</div>;
+>>>>>>> b7eb8b05e7825b3066a6f3f3316489adf64312db
 }

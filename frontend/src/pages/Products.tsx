@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { useMemo, useState, type FormEvent } from "react";
 import type { Warehouse } from "../types";
 
@@ -267,4 +268,8 @@ export default function Products({ search, onSearchChange, warehouse, onWarehous
       )}
     </section>
   );
+=======
+export default function Products() {
+  return <div>Products</div>;
+>>>>>>> b7eb8b05e7825b3066a6f3f3316489adf64312db
 }

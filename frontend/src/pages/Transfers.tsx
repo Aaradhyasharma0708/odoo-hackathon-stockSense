@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { useMemo, useState, type FormEvent } from "react";
 import type { Warehouse } from "../types";
 
@@ -214,4 +215,8 @@ export default function Transfers({ search, onSearchChange, warehouse }: Transfe
       )}
     </section>
   );
+=======
+export default function Transfers() {
+  return <div>Transfers</div>;
+>>>>>>> b7eb8b05e7825b3066a6f3f3316489adf64312db
 }

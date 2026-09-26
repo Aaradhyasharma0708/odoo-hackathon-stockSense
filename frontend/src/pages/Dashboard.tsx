@@ -72,14 +72,13 @@ const warehouseTotals: Record<Warehouse, number> = {
   "East Cross-dock": 1333,
 };
 
-const pageComponents: Partial<Record<PageKey, ComponentType>> = {
-<<<<<<< HEAD
-  Settings, "My Profile": Profile, Stock,
-=======
-  Products, Receipts, "Delivery Orders": Deliveries, Transfers, Adjustments,
-  "Move History": MoveHistory, Settings, "My Profile": Profile, Stock,
->>>>>>> b7eb8b05e7825b3066a6f3f3316489adf64312db
+
+const pageComponents: Partial<Record<"Settings" | "My Profile" | "Stock", ComponentType>> = {
+  Settings,
+  "My Profile": Profile,
+  Stock,
 };
+
 
 const navItems: { label: PageKey; icon: string; count?: string }[] = [
   { label: "Overview", icon: "grid" },
@@ -161,7 +160,10 @@ export default function Dashboard({ user, onLogout }: DashboardProps) {
   const visibleAlerts = stockAlerts.filter((item) => warehouse === "All warehouses" || item.location === warehouse);
   const warehouseOperations = operations.filter((item) => warehouse === "All warehouses" || item.location === warehouse);
   const totalStock = warehouse === "All warehouses" ? stats.totalStockUnits : warehouseTotals[warehouse];
-  const Component = pageComponents[page];
+  const Component =
+    page === "Settings" || page === "My Profile" || page === "Stock"
+      ? pageComponents[page]
+      : undefined;
 
   function resetFilters() {
     setDocType("All");
@@ -206,11 +208,12 @@ export default function Dashboard({ user, onLogout }: DashboardProps) {
           </label>
           <label className="ss-global-search">
             <Icon name="search" size={16} /><span className="sr-only">Search inventory</span>
-<<<<<<< HEAD
-            <input value={search} onChange={(event) => setSearch(event.target.value)} onFocus={() => { if (page !== "Products" && page !== "Receipts" && page !== "Delivery Orders" && page !== "Transfers" && page !== "Adjustments" && page !== "Move History") setPage("Overview"); }} placeholder="Search inventory" />
-=======
-            <input value={search} onChange={(event) => setSearch(event.target.value)} onFocus={() => setPage("Overview")} placeholder="Search inventory" />
->>>>>>> b7eb8b05e7825b3066a6f3f3316489adf64312db
+<input
+  value={search}
+  onChange={(event) => setSearch(event.target.value)}
+  onFocus={() => setPage("Overview")}
+  placeholder="Search inventory"
+/>
             <kbd>⌘ K</kbd>
           </label>
           <div className="ss-anchor">
@@ -301,7 +304,7 @@ export default function Dashboard({ user, onLogout }: DashboardProps) {
             <footer className="ss-ledger-footer"><button className="ss-link" type="button" onClick={() => navigate("Move History")}>View movement history <Icon name="arrow" size={14} /></button></footer>
           </section>
           <footer className="ss-page-footer"><span>StockSense <i>·</i> Inventory intelligence</span><span>Showing data for <strong>{warehouse}</strong></span></footer>
-<<<<<<< HEAD
+
         </> : page === "Products" ? <Products
           search={search}
           onSearchChange={setSearch}
@@ -328,13 +331,25 @@ export default function Dashboard({ user, onLogout }: DashboardProps) {
           onSearchChange={setSearch}
           warehouse={warehouse}
         /> : <section className="ss-placeholder-page">
-=======
-        </> : <section className="ss-placeholder-page">
->>>>>>> b7eb8b05e7825b3066a6f3f3316489adf64312db
-          <div className="ss-date-line"><Icon name="grid" size={13} /> WORKSPACE <span>·</span> {page.toUpperCase()}</div>
-          <h1>{page}</h1><p>This area is ready for the {page.toLowerCase()} workflow.</p>
-          {Component ? <Component /> : <div className="ss-placeholder-card">{page} functionality will be available soon.</div>}
-          <button className="ss-add-product" type="button" onClick={() => navigate("Overview")}><Icon name="arrow" size={15} /> Back to overview</button>
+          <div className="ss-date-line">
+            <Icon name="grid" size={13} /> WORKSPACE <span>·</span> {page.toUpperCase()}
+          </div>
+          <h1>{page}</h1>
+          <p>This area is ready for the {page.toLowerCase()} workflow.</p>
+          {Component ? (
+            <Component />
+          ) : (
+            <div className="ss-placeholder-card">
+              {page} functionality will be available soon.
+            </div>
+          )}
+          <button
+            className="ss-add-product"
+            type="button"
+            onClick={() => navigate("Overview")}
+          >
+            <Icon name="arrow" size={15} /> Back to overview
+          </button>
         </section>}
       </main>
     </div>

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 export type UserRole = "Inventory Manager" | "Warehouse Staff";
 
 export interface User {
@@ -60,66 +59,3 @@ export type Warehouse =
   | "East Cross-dock";
 
 export type ProductCategory = "Metal" | "Furniture" | "Electronics" | "Stationery";
-=======
-export type UserRole = "Inventory Manager" | "Warehouse Staff";
-
-export interface User {
-  fullName: string;
-  email: string;
-  role: UserRole;
-}
-
-export type OperationType = "Receipt" | "Delivery" | "Internal" | "Adjustment";
-export type OperationStatus = "Draft" | "Waiting" | "Ready" | "Done" | "Canceled";
-
-export interface Operation {
-  reference: string;
-  type: OperationType;
-  product: string;
-  sku: string;
-  quantity: string;
-  location: Warehouse;
-  status: OperationStatus;
-  statusLabel: string;
-  category: ProductCategory;
-  counterparty: string;
-  time: string;
-  icon: "receipt" | "delivery" | "transfer" | "adjustment";
-}
-
-export interface DashboardStats {
-  totalStockUnits: number;
-  lowStockItems: number;
-  pendingReceipts: number;
-  pendingDeliveries: number;
-  scheduledTransfers: number;
-}
-
-export interface StockAlert {
-  product: string;
-  sku: string;
-  location: Warehouse;
-  onHand: number;
-  status: "Low" | "Out of stock";
-  category: ProductCategory;
-}
-
-export interface LedgerEntry {
-  description: string;
-  detail: string;
-  quantity: number;
-  time: string;
-  kind: "receipt" | "delivery" | "adjustment" | "transfer";
-}
-
-export type Warehouse =
-  | "Main Warehouse"
-  | "Production Floor"
-  | "Rack A"
-  | "Rack B"
-  | "North Hub"
-  | "South Annex"
-  | "East Cross-dock";
-
-export type ProductCategory = "Metal" | "Furniture" | "Electronics" | "Stationery";
->>>>>>> b7eb8b05e7825b3066a6f3f3316489adf64312db

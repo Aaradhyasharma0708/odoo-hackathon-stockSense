@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 import { useMemo, useState, type FormEvent } from "react";
 import type { Warehouse } from "../types";
 
@@ -212,8 +212,4 @@ export default function Deliveries({ search, onSearchChange, warehouse }: Delive
       )}
     </section>
   );
-=======
-export default function Deliveries() {
-  return <div>Deliveries</div>;
->>>>>>> b7eb8b05e7825b3066a6f3f3316489adf64312db
 }
